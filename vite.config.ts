@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/github-mcp-test/' : '/',
   plugins: [
     react(),
     sentryVitePlugin({
@@ -13,4 +14,4 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
-})
+}))

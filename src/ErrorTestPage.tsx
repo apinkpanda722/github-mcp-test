@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import * as Sentry from '@sentry/react'
 
-function BrokenComponent() {
+function BrokenComponent(): React.ReactNode {
   throw new Error('렌더링 중 강제 에러 발생 (React Error Boundary 테스트)')
 }
 
