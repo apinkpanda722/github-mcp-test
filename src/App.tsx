@@ -4,11 +4,11 @@ import ErrorTestPage from './ErrorTestPage'
 import TodoFilter from './components/TodoFilter'
 import type { Todo, TodoFilterType } from './types/todo'
 
-const FallbackUI = ({ error, resetError }: { error: Error; resetError: () => void }) => (
+const FallbackUI = ({ error, resetError }: { error: unknown; resetError: () => void }) => (
   <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'sans-serif' }}>
     <h2 style={{ color: '#e04e39' }}>에러가 발생했습니다 (ErrorBoundary 캡처됨)</h2>
     <pre style={{ background: '#f8f8f8', padding: '1rem', borderRadius: '6px', textAlign: 'left', maxWidth: '600px', margin: '1rem auto', overflow: 'auto' }}>
-      {error.message}
+      {error instanceof Error ? error.message : String(error)}
     </pre>
     <p style={{ color: '#666' }}>이 에러는 Sentry에 자동으로 전송되었습니다.</p>
     <button
